@@ -3,7 +3,7 @@
 <div class="w3-container" style="margin-top: 50px">
     <div class="w3-modal-content w3-animate-zoom w3-card-4 w3-padding w3-round" style="width: 40%">
         <header class="w3-container w3-border-bottom w3-border-teal w3-center">
-            <h2>Edit note</h2>
+            <h2>Edit Product</h2>
         </header>
         <div class="w3-container w3-padding">
             <form action="/product-update/{{$product->id}}" method="post" enctype="multipart/form-data">
@@ -22,6 +22,14 @@
                 <div class="w3-container">
                     <label>Description</label>
                     <textarea class="w3-input" rows="5" columns="8" name="description" required>{{$product->description}}</textarea>
+                </div>
+                <div class="w3-container">
+                    <label for="">Category</label>
+                    <select name="category_id" id="" class="w3-input">
+                        @foreach($categories as $cat)
+                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="w3-container w3-center">

@@ -15,7 +15,7 @@
                     <!-- for each loop here -->
                     @foreach($categories as $category)
                     <tr>
-                        <td>annie</td>
+                        <td>{{$category->name}}</td>
                         <td> <a href="/category-delete/{{$category->id}}" class="w3-button  w3-xlarge"><i class="fa-solid fa-trash" style="color: #b90707"></i></a></td>
                     </tr>
                     @endforeach

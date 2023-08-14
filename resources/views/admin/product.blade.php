@@ -12,6 +12,7 @@
                         <th>Product name</th>
                         <th>Category</th>
                         <th> Image</th>
+                        <th> Price</th>
                         <th>Description</th>
                         <th>Action</th>
                     </tr>
@@ -23,6 +24,7 @@
                         <td>{{$product->name}}</td>
                         <td>{{$product->category['name']}}</td>5
                         <td><img src="{{asset($product->image)}}" alt="" width="70px" ; height="70px"></td>
+                        <td>{{$product->price}}</td>
                         <td>{{$product->description}}</td>
                         <td>
                             <a href="/product-edit/{{$product->id}}"> <button class="Edit">Edit</button></a>
@@ -59,6 +61,11 @@
                     <div class="w3-container">
                         <label>Image</label>
                         <input class="w3-input" type="file" name="image" required />
+                    </div>
+                    <br />
+                    <div class="w3-container">
+                        <label>Price</label>
+                        <input class="w3-input" type="text" name="price" required />
                     </div>
                     <br />
 

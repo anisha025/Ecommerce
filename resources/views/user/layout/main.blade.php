@@ -3,6 +3,92 @@
 
 <!-- index.html  03:25:08 GMT -->
 <style>
+    /* cart css */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    }
+
+    /* view cart css */
+
+    /* Style for cart container */
+    .view-cart-dtls {
+        margin: 30px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+
+    .cart-heading {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    /* Style for cart item table */
+    .cart-items table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    /* Style for table headers */
+    .cart-items th {
+        text-align: left;
+        font-size: 10px;
+        padding: 10px;
+        background-color: #f2f2f2;
+    }
+
+    /* Style for table data */
+    .cart-items td {
+        font-size: 16px;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    /* Style for item image */
+    .view-cart-img {
+        width: 100px;
+        height: 100px;
+        margin-right: 20px;
+        float: left;
+    }
+
+    /* Style for item name */
+    .cart-items h4 {
+        margin-top: 30px;
+        font-size: 18px;
+    }
+
+
+    /* Style for input field */
+    .cart-items input[type="number"] {
+        width: 50px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .Delete {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
     /* product css */
 
     .product-heading {
@@ -71,7 +157,8 @@
 
     <!-- CSS 
     ========================= -->
-
+    <!-- w3.css  -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 
     <!-- Plugins CSS -->
     <link rel="stylesheet" href="{{asset('frontend/assets/css/plugins.css')}}">
@@ -248,7 +335,8 @@
                             <div class="top_right text-right">
                                 <ul>
                                     <li><a href="my-account.html">Account</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
+                                    <li><a href="/checkout">Checkout</a></li>
+                                    <li><a href="/orderdetails">Order Details</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -267,70 +355,24 @@
                         </div>
                         <div class="col-lg-9 col-md-6">
                             <div class="middel_right">
+                                <!-- search -->
                                 <div class="search_container">
-                                    <form action="#">
+                                    <form action="/search" method="post">
+                                        @csrf
                                         <div class="search_box">
-                                            <input placeholder="Search product..." type="text">
+                                            <input placeholder="Search product..." name="search" type="text">
                                             <button type="submit">Search</button>
                                         </div>
                                     </form>
                                 </div>
+                                <!-- search end -->
                                 <div class="middel_right_info">
                                     <div class="header_wishlist">
                                         <a href="#"><img src="{{asset('frontend/assets/img/user.png')}}" alt=""></a>
                                     </div>
-                                    <div class="mini_cart_wrapper">
-                                        <a href="javascript:void(0)"><img src="{{asset('frontend/assets/img/shopping-bag.png')}}" alt=""></a>
-                                        <span class="cart_quantity">2</span>
-                                        <!--mini cart-->
-                                        <div class="mini_cart">
-                                            <div class="cart_item">
-                                                <div class="cart_img">
-                                                    <a href="#"><img src="assets/img/s-product/product.jpg" alt=""></a>
-                                                </div>
-                                                <div class="cart_info">
-                                                    <a href="#">Sit voluptatem rhoncus sem lectus</a>
-                                                    <p>Qty: 1 X <span> $60.00 </span></p>
-                                                </div>
-                                                <div class="cart_remove">
-                                                    <a href="#"><i class="ion-android-close"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="cart_item">
-                                                <div class="cart_img">
-                                                    <a href="#"><img src="assets/img/s-product/product2.jpg" alt=""></a>
-                                                </div>
-                                                <div class="cart_info">
-                                                    <a href="#">Natus erro at congue massa commodo</a>
-                                                    <p>Qty: 1 X <span> $60.00 </span></p>
-                                                </div>
-                                                <div class="cart_remove">
-                                                    <a href="#"><i class="ion-android-close"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="mini_cart_table">
-                                                <div class="cart_total">
-                                                    <span>Sub total:</span>
-                                                    <span class="price">$138.00</span>
-                                                </div>
-                                                <div class="cart_total mt-10">
-                                                    <span>total:</span>
-                                                    <span class="price">$138.00</span>
-                                                </div>
-                                            </div>
-
-                                            <div class="mini_cart_footer">
-                                                <div class="cart_button">
-                                                    <a href="cart.html">View cart</a>
-                                                </div>
-                                                <div class="cart_button">
-                                                    <a href="checkout.html">Checkout</a>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                        <!--mini cart end-->
+                                    <!-- cart -->
+                                    <div class="">
+                                        <a href="/showcart"><img src="{{asset('frontend/assets/img/shopping-bag.png')}}" alt=""></a>
                                     </div>
                                 </div>
                             </div>
@@ -348,25 +390,11 @@
                                 <nav>
                                     <ul>
                                         <li><a href="/">home</a></li>
-                                        @if(auth()->user())
-                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
-                                        </div>
-                                        @else
-                                        <li><a href="{{route('login')}}">login</a></li>
-                                        <li><a href="{{route('register')}}">register</a></li>
-                                        @endif
                                         <li><a href="/show-product">Product</a></li>
 
-                                        <li><a class="active" href="#">pages <i class="fa fa-angle-down"></i></a>
-                                            <ul class="sub_menu pages">
+                                        <li><a class="active" href="">pages <i class="fa fa-angle-down"></i></a>
+                                            <!-- <ul class="sub_menu pages">
                                                 <li><a href="about.html">About Us</a></li>
                                                 <li><a href="contact.html">contact</a></li>
                                                 <li><a href="privacy-policy.html">privacy policy</a></li>
@@ -391,7 +419,7 @@
                                                 <li><a href="cart.html">cart</a></li>
                                                 <li><a href="tracking.html">tracking</a></li>
                                                 <li><a href="checkout.html">checkout</a></li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
                                         <li><a href="blog.html">blog<i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">
@@ -400,6 +428,18 @@
                                             </ul>
                                         </li>
                                         <li><a href="contact.html"> Contact Us</a></li>
+                                        @if(auth()->user())
+                                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" class=" fs-4 text-white navbar-brand"> {{ __('Logout') }}</a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                        @else
+                                        <li><a href="{{route('login')}}">login</a></li>
+                                        <li><a href="{{route('register')}}">register</a></li>
+                                        @endif
                                     </ul>
                                 </nav>
                             </div>

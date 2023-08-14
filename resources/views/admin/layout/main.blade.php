@@ -19,6 +19,7 @@
             <a href="/dashboard" class=" fs-1 text-white navbar-brand"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a>
             <a href="/category" class=" fs-4 text-white navbar-brand"> Category</a>
             <a href="/product" class=" fs-4 text-white navbar-brand"> Product</a>
+            <a href="/order" class=" fs-4 text-white navbar-brand"> Order</a>
             <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();" class=" fs-4 text-white navbar-brand"> {{ __('Logout') }}</a>
 
